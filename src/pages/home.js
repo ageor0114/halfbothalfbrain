@@ -1,55 +1,37 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from 'material-ui/styles';
 
 class HomePage extends React.Component{
 	state = {
-		list: [],
-		inputVal: '',
-	}
-
-	handleSubmit = (e) => {
-	  e.preventDefault();
-	  this.setState({
-	    list: [...this.state.list, this.state.inputVal],
-	    inputVal: '',
-	  })
-	}
-
-	handleChange = e => {
-	    this.setState({inputVal: e.target.value});
-	}
-
-	textChangeHandler(event)  {
-		//this.setState({ chatInput: event.target.value });
-		this.setState(prevState => {
-	      let newState = prevState;
-	      newState.chatInput = event.target.value;
-	      return newState;
-	    });
-	}
-
-	handleChange(name) {
-		console.log(name);
 	}
 
     render(){
     	const {inputVal, list} = this.state;
+    	const style = {
+    		background: 'white',
+    	}
 	return(
 	    <div>
-		<p>
-		    Welcome to the boiler plate
-		</p>
-		<form onSubmit={this.handleSubmit}>
-			<input type="text"
-	          onChange={this.handleChange}
-	          value={inputVal}
-	          placeholder="Write a line ..."
-	          required />
-		</form>
-		{
-          list.map(item => <p>{item}</p>)
-        }
+	    <center>
+		<h1>A Tale Of Two Writers</h1>
+		<p>"The Never-Ending Novel That Is Half Brain & Half Bot"</p>
+		<div>
+			<p id="inline" className="namePrompt">Enter Your Name:</p>
+			<div id="inline">
+				<TextField 
+				style={style}
+			    />
+      		</div>
+		</div>
+		<div>
+			<p>Pick a Story</p>
+		</div>
+		<Button>Start</Button>
+		</center>
 	    </div>
+
 	)
     }
 };
