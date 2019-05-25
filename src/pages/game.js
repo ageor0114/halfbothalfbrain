@@ -1,17 +1,22 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-
-
-
-
-
 class GamePage extends React.Component{
   state = {
 		list: [],
 		inputVal: '',
     story: '',
+    showButton: false,
+    isOver: false,
 	}
+
+  onClickEnd = () => {
+    this.setState(prevState => {
+      let newState = prevState;
+      newState.isOver = true;
+      return newState;
+    });
+  }
 
 	handleSubmit = (e) => {
 	  e.preventDefault();
@@ -21,9 +26,14 @@ class GamePage extends React.Component{
       newState.list = [...this.state.list, this.state.inputVal];
       newState.inputVal = '';
       newState.story = newStory;
+      //console.log("input: " + prevState.story.charAt(prevState.story.length-1));
+      //console.log(prevState.story.charAt(prevState.story.length-1) === '.');
+      //console.log('.');
+      if (prevState.story.charAt(prevState.story.length-1) === '.'){
+        this.state.showButton = true;
+      }
       return newState;
     });
-    console.log(this.state.story);
 	}
 
 	handleChange = e => {
@@ -44,20 +54,25 @@ class GamePage extends React.Component{
 	}
 
     render(){
-    	const {inputVal, list, story} = this.state;
+    	const {inputVal, list, story, onClickEnd, showButton, isOver} = this.state;
 	return(
 	    <div>
-		<p>
-		    Welcome to the game page
-		</p>
-		<form onSubmit={this.handleSubmit}>
-			<input type="text"
-	          onChange={this.handleChange}
-	          value={inputVal}
-	          placeholder="Write a line ..."
-	          required />
-		</form>
-    <p>{this.state.story}</p>
+		{!this.state.isOver &&
+      <div>
+        <p>
+  		    Welcome to the game page!
+  		</p>
+  		<form onSubmit={this.handleSubmit}>
+  			<input type="text"
+  	          onChange={this.handleChange}
+  	          value={inputVal}
+  	          placeholder="Write a line ..."
+  	          required />
+  		</form>
+      <p>{this.state.story}</p>
+      {this.state.showButton && <button onClick={this.onClickEnd}>End Game</button>}
+    </div>}
+    {this.state.isOver && <div>Thanks for playing, hope you had fun!</div>}
 
 	    </div>
 	)
