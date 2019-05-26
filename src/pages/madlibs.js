@@ -5,7 +5,17 @@ import { makeStyles } from 'material-ui/styles';
 import { Link } from 'react-router-dom';
 import Switch from '@material-ui/core/Switch';
 import AddIcon from '@material-ui/icons/Add';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
+
+const shelterBox={
+  padding: '1em 2em',
+  margin: '5em',
+  fontFamily: 'Lora',
+  textDecoration: 'none',
+  height: '800px',
+}
 
 class MadLibs extends React.Component{
 
@@ -37,9 +47,16 @@ class MadLibs extends React.Component{
         this.setState({story2: event.target.value});
   	}
 
+  	handleChangeX(event) {
+  	this.setState({show2: event.target.value});
+    console.log(this.state.show2);
+  	}
+
   	addButton(){
   		this.setState({show2: true});
   	}
+
+
 
     enhanceStory(){
     	//STRING MANIPULATION
@@ -54,14 +71,13 @@ class MadLibs extends React.Component{
 			var temp = [];
 			array1 = array1.toString().split(',').map(Number);
 			array2 = array2.toString().split(',').map(Number);
-    	
+
 			for (var i in array1) {
 				if(array2.indexOf(array1[i]) === -1) temp.push(array1[i]);
 			}
 			for(i in array2) {
 				if(array1.indexOf(array2[i]) === -1) temp.push(array2[i]);
 			}
-			//differences = temp.sort((a,b) => 'handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.';
 
     	//PYTHON INTEGRATION
     	var data =
@@ -83,9 +99,9 @@ class MadLibs extends React.Component{
 		})
         .then(response => response.json())
         .then((body) => {
-            this.setState({submitted: true});
-            this.setState({output: body.result});
-            console.log(body);
+			    	this.setState({submitted:true});
+						this.setState({output:body.result});
+            //console.log(body.result);
         })
         .catch(error => console.error('Error:', error));
     }
@@ -124,13 +140,48 @@ class MadLibs extends React.Component{
 					<br/>
 					<br/>
 				    </form>
-				    <button className="madButton" onClick={this.enhanceStory}>Compose My Story</button>
+				    <div>
+				    	<button id="inline" className="madButton" onClick={this.enhanceStory}>Compose My Story</button>
+				    	<p id="inline">Enhance 1 Story</p>
+				    	<div id="inline">  <Switch disabled
+					        checked={this.state.show2}
+					        onChange={this.handleChangeX}
+					        value="show2"
+					        color="primary"
+					      /></div>
+				    	<p id="inline">Combine 2 Stories</p>
+				    </div>
 			</div>}
+<<<<<<< HEAD
 			{this.state.submitted && <div>
             <img src="src\pages\explode.gif"></img>
 				<h1>Your Story</h1>
+=======
+>>>>>>> de37de20c583f35b2a5c71d859f6797c27ba5986
 
-				<div id="madPrompt"><p>{this.state.output}</p></div>
+
+			{this.state.submitted && <div>
+				<br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <p>Thanks for playing, hope you had fun!</p>
+
+	      <Paper style={shelterBox} elevation={5}>
+	        <Typography variant="headline" gutterBottom>
+	          <u><b>Your Story:</b></u>
+	        </Typography>
+	        <br/>
+	        <Typography variant="subheading" gutterBottom>
+	        <div class= "finalStory" id="madPrompt">{this.state.output}<span>|</span></div>
+	        </Typography>
+	    </Paper>
+
+
+
 				</div>}
 			</center>
 	    </div>
