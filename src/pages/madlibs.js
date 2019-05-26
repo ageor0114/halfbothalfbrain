@@ -29,23 +29,19 @@ class MadLibs extends React.Component{
 		console.log('submit');
 	}
 
-	handleChange(event) {
-    this.setState({story: event.target.value});
-    console.log(this.state.story);
+	handleChange(event){
+        this.setState({story: event.target.value});
   	}
 
   	handleChange2(event) {
-  	this.setState({story2: event.target.value});
-    console.log(this.state.story2);
+        this.setState({story2: event.target.value});
   	}
 
   	addButton(){
-  		console.log("we in");
   		this.setState({show2: true});
   	}
 
     enhanceStory(){
-    	this.setState({submitted:true});
     	//STRING MANIPULATION
 		//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
 		let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
@@ -53,10 +49,6 @@ class MadLibs extends React.Component{
 		console.log('story' + this.state.story);
 			var array1 = this.state.story.split(" ");
 			var array2 = output.split(" ");
-			console.log(1);
-			console.log('array1');
-			console.log(2);
-			console.log('array2');
 			var differences = [];
 
 			var temp = [];
@@ -72,15 +64,16 @@ class MadLibs extends React.Component{
 			//differences = temp.sort((a,b) => 'handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.';
 
     	//PYTHON INTEGRATION
-    	var data = {
+    	var data =
+        {
     		original: this.state.story,
-    		modifier: this.state.story2
+    		modifier: this.state.story2,
+            craziness: 100
     	}
-    	var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
-		    targetUrl = 'http://halfbothalfbrain.pythonanywhere.com/api/mash';
 
 		var url = 'https://py-mashup.herokuapp.com/api/mash';
 
+        console.log(data);
 		fetch(url, {
 		  method: 'POST', // or 'PUT'
 		  body: JSON.stringify(data), // data can be `string` or {object}!
@@ -90,7 +83,9 @@ class MadLibs extends React.Component{
 		})
         .then(response => response.json())
         .then((body) => {
-            console.log(body.result);
+            this.setState({submitted: true});
+            this.setState({output: body.result});
+            console.log(body);
         })
         .catch(error => console.error('Error:', error));
     }
@@ -112,7 +107,7 @@ class MadLibs extends React.Component{
 	    <br/>
 		    <center>
 			<h1>A Tale of Two Writers</h1>
-			{!this.submitted && <div>
+			{!this.state.submitted && <div>
 			<p>Write your own story or take an excerpt from online. When you're ready, press the button and let our robotic author do the rest ...</p>
 			<br/>
 					<form onSubmit={this.handleSubmit}>
@@ -131,7 +126,8 @@ class MadLibs extends React.Component{
 				    </form>
 				    <button className="madButton" onClick={this.enhanceStory}>Compose My Story</button>
 			</div>}
-			{this.submitted && <div>
+			{this.state.submitted && <div>
+            <img src="src\pages\explode.gif"></img>
 				<h1>Your Story</h1>
 
 				<div id="madPrompt"><p>{this.state.output}</p></div>
