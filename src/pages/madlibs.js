@@ -30,7 +30,6 @@ class MadLibs extends React.Component{
 
     enhanceStory(e){
     	e.preventDefault();
-<<<<<<< HEAD
 			//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
 			let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
 			let newWords = [];
