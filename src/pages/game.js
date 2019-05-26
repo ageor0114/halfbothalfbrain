@@ -36,9 +36,6 @@ class GamePage extends React.Component{
       newState.list = [...this.state.list, this.state.inputVal];
       newState.inputVal = '';
       newState.story = newStory;
-      //console.log("input: " + prevState.story.charAt(prevState.story.length-1));
-      //console.log(prevState.story.charAt(prevState.story.length-1) === '.');
-      //console.log('.');
       if (prevState.story.charAt(prevState.story.length-1) === '.'){
         this.state.showButton = true;
       }
@@ -54,7 +51,6 @@ class GamePage extends React.Component{
 	}
 
 	textChangeHandler(event)  {
-		//this.setState({ chatInput: event.target.value });
 		this.setState(prevState => {
 	      let newState = prevState;
 	      newState.chatInput = event.target.value;
