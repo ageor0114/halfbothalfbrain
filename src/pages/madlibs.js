@@ -4,22 +4,44 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from 'material-ui/styles';
 import { Link } from 'react-router-dom';
 
+import AddIcon from '@material-ui/icons/Add';
+
+
 class MadLibs extends React.Component{
-	state = {
-		story: '',
+
+	constructor(props){
+		super(props);
+		this.state = {
+			story: '',
+			story2: '',
+			show2: false,
+			submitted: false,
+			output: '',
+		}
+	    this.handleChange = this.handleChange.bind(this);
+	    this.handleChange2 = this.handleChange2.bind(this);
+    	this.handleSubmit = this.handleSubmit.bind(this);
+    	this.addButton = this.addButton.bind(this);
 	}
 
 	handleSubmit(){
 		console.log('submit');
 	}
 
-	onChange(e){
-		this.setState(prevState => {
-			let newState = prevState;
-			newState.story = e.target;
-			return newState;
-		})
-	}
+	handleChange(event) {
+    this.setState({story: event.target.value});
+    console.log(this.state.story);
+  	}
+
+  	handleChange2(event) {
+  	this.setState({story2: event.target.value});
+    console.log(this.state.story2);
+  	}
+
+  	addButton(){
+  		console.log("we in");
+  		this.setState({show2: true});
+  	}
 
     enhanceStory(e){
     	e.preventDefault();
@@ -33,13 +55,13 @@ class MadLibs extends React.Component{
 
     	//PYTHON INTEGRATION
     	var data = {
-    		original: this.state.story,
-    		modifier: 'With a wicked stepmother (Eleanor Audley) and two jealous stepsisters (Rhoda Williams, Lucille Bliss) who keep her enslaved and in rags, Cinderella (Ilene Woods) stands no chance of attending the royal ball. When her fairy godmother (Verna Felton) appears and magically transforms her reality into a dream come true, Cinderella enchants the handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.'
+    		//original: 'With a wicked stepmother (Eleanor Audley) and two jealous stepsisters (Rhoda Williams, Lucille Bliss) who keep her enslaved and in rags, Cinderella (Ilene Woods) stands no chance of attending the royal ball. When her fairy godmother (Verna Felton) appears and magically transforms her reality into a dream come true, Cinderella enchants the handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.',ki
+    		modifier: ''
     	}
     	var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
 		    targetUrl = 'http://halfbothalfbrain.pythonanywhere.com/api/mash';
 
-		var url = targetUrl;
+		var url = proxyUrl+targetUrl;
 
 		fetch(url, {
 		  method: 'POST', // or 'PUT'
@@ -68,15 +90,31 @@ class MadLibs extends React.Component{
 	    <br/>
 	    <br/>
 		    <center>
-			<h1>Robotic Mad Libs</h1>
+			<h1>A Tale of Two Writers</h1>
+			{!this.submitted && <div>
 			<p>Write your own story or take an excerpt from online. When you're ready, press the button and let our robotic author do the rest ...</p>
 			<br/>
 					<form onSubmit={this.handleSubmit}>
-					<textarea className="madPrompt" type="text" onChange={(e)=>{this.onChange(e)}} placeholder="Enter Your Story" value={this.state.story}/>
+					<div>
+						<textarea id="inline" value={this.state.story} className="madPrompt" type="text" onChange={this.handleChange}  placeholder="Enter A Story" />
+						<div id="inline">
+							{/*!this.show2 && <button type="button" onClick={this.state.addButton} className="circleButton">+</button>*/}
+						</div>
+						<textarea id="inline" value={this.state.story2} className="madPrompt" type="text" onChange={this.handleChange2}  placeholder="Enter Another Story OR Leave it Blank to Let Our Robot Do The Rest" />
+						<div id="inline">
+							{this.show2 && <Button>DELETE</Button>}
+						</div>
+					</div>
 					<br/>
 					<br/>
-					<button className="madButton" onClick={(e) => {this.enhanceStory(e)}}>Enhance My Story</button>
+					<button className="madButton" onClick={(e) => {this.enhanceStory(e)}}>Compose My Story</button>
 				    </form>
+			</div>}
+			{this.submitted && <div>
+				<h1>Your Story</h1>
+
+				<div id="madPrompt"><p>{this.state.output}</p></div>
+				</div>}
 			</center>
 	    </div>
 
