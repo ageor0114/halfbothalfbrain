@@ -25,33 +25,29 @@ class HomePage extends React.Component{
     	const {inputVal, list} = this.state;
     	const style = {
     		background: '#ffc9a8',
-    		height: 74,
+    		height: 60,
     		fontSize: 20,
     		borderRadius: 0,
+    		width: 180,
     	}
 	return(
 	    <div>
-	    //<br/>
-	   // <br/>
+	   	<br/>
+	    <br/>
 	    <section id="cardHome" className="card">
 		    <center>
-			<h1>"A Tale Of Two Writers"</h1>
+			<h1>A Tale Of Two Writers</h1>
 			<p>Create a Literary Masterpiece That Is <b id="lightTan"><i>Half Bot & Half Brain</i></b></p>
 			<br/>
 			<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/hands.jpg?raw=true" id="fullWidth" alt="Portrait"/>
-
 			<div>
-				<div id="inline">
-					<form onSubmit={this.handleSubmit}>
-					<input className="namePrompt" type="text" onChange={(e)=>{this.onChange(e)}} placeholder="Enter Your Name" value={this.state.name}/>
-				    </form>
-	      		</div>
-	      		<div className="startButton" id="inline">
-	      			<Button style={style}>START</Button>
+	      		<div className="startButton">
+	      			<Link to="/madlibs"><Button style={style}>START</Button></Link>
 	      		</div>
 			</div>
+			<br/>
 			<p>What is <b><i>Half Bot Half Brain</i></b>?</p>
-			<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/downarrow.gif?raw=true" did="fullWidth" alt="Portrait"/>
+			<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/downarrow.gif?raw=true" id="arrow" alt="Portrait"/>
 			</center>
 		</section>
 
