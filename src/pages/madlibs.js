@@ -16,10 +16,21 @@ class MadLibs extends React.Component{
 	onChange(e){
 		this.setState(prevState => {
 			let newState = prevState;
-			newState.name = e.target;
+			newState.story = e.target;
 			return newState;
 		})
 	}
+
+    enhanceStory(e){
+    	e.preventDefault();
+    	const spacyNLP = require('spacy-nlp');
+    	const nlp = spacyNLP.nlp;
+
+    	nlp.parse(this.state.story).then(output => {
+    			console.log(output);
+    			console.log(JSON.stringify(output[0].parse_tree,null,2));
+    	});
+    }
 
     render(){
     	const {inputVal, list} = this.state;
@@ -29,6 +40,7 @@ class MadLibs extends React.Component{
     		fontSize: 20,
     		borderRadius: 0,
     	}
+
 	return(
 	    <div>
 	    <br/>
@@ -40,10 +52,10 @@ class MadLibs extends React.Component{
 			<p>Enter your own story and let our robotic author do the rest ...</p>
 			<br/>
 					<form onSubmit={this.handleSubmit}>
-					<input className="madPrompt" type="text" onChange={(e)=>{this.onChange(e)}} placeholder="Enter Your Story" value={this.state.name}/>
+					<input className="madPrompt" type="text" onChange={(e)=>{this.onChange(e)}} placeholder="Enter Your Story" value={this.state.story}/>
 					<br/>
 					<br/>
-					<button className="madButton">Enhance My Story</button>
+					<button className="madButton" onClick={(e) => {this.enhanceStory(e)}}>Enhance My Story</button>
 				    </form>
 			</center>
 	    </div>
