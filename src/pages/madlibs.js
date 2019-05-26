@@ -153,11 +153,6 @@ class MadLibs extends React.Component{
 				    </div>
 			</div>}
 			{this.state.submitted && <div>
-            <img src="src\pages\explode.gif"></img>
-				<h1>Your Story</h1>
-
-
-			{this.state.submitted && <div>
 				<br/>
 	      <br/>
 	      <br/>
@@ -166,7 +161,6 @@ class MadLibs extends React.Component{
 	      <br/>
 	      <br/>
 	      <p>Thanks for playing, hope you had fun!</p>
-
 	      <Paper style={shelterBox} elevation={5}>
 	        <Typography variant="headline" gutterBottom>
 	          <u><b>Your Story:</b></u>
@@ -176,15 +170,10 @@ class MadLibs extends React.Component{
 	        <div class= "finalStory" id="madPrompt">{this.state.output}<span>|</span></div>
 	        </Typography>
 	    </Paper>
-
-
-
 				</div>}
 			</center>
 	    </div>
-
 	)
     }
 };
-
 export default MadLibs
