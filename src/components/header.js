@@ -7,112 +7,45 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
+//import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
+//Problem: Bar is not fully sticky
 
 class Header extends React.Component{
     constructor(props){
 	super(props);
+
+	this.toggle = this.toggle.bind(this);
+
 	this.state = {
-	    snackbar: {
-		open: false,
-		message: null
-	    }
+		dropdownOpen: false,
 	}
     }
 
-    logout(){
-	this.props.firebase.logout();
-	this.setState({
-	    snackbar: {
-		open: true,
-		message: <p>Goodbye!</p>
-	    }
-	});
-    }
-
-    closeSnackbar(event, reason){
-	if(reason == "clickaway"){
-	    // do nothing
-	    return;
-	}
-	this.setState({
-	    snackbar: {
-		open: false
-	    }
-	});
+    toggle() {
+    	this.setState(prevState => ({
+    		dropwdownOpen: !prevState.dropdownOpen
+    	}));
     }
 
     render(){
-	let greeting;
-	if(!this.props.auth.isLoaded){
-	    // auth is still warming up
-	    // so unsure if user is logged in or not;
-	    greeting = null;
-	}
-	if(this.props.auth.isLoaded && !this.props.auth.isEmpty){
-	    // user is logged in!
-	    greeting = <span>Hello {this.props.auth.email}!
-		<Link to="/sandwiches">
-		    <Button variant="contained"
-			style={{marginLeft: 30}}
-			    color="secondary">
-			Muh Sandwiches
-		    </Button>
-	    	</Link>
-
-		<Button color="inherit"
-			onClick={() => {this.logout();}}
-		>Logout</Button>
-	    </span>;
-	}
-	if(this.props.auth.isLoaded && this.props.auth.isEmpty){
-	    // user is not logged in
-	    greeting =
-		<span>
-		    <Link to="/login">
-			<Button color="inherit">
-			Login
-			</Button>
-	    	    </Link>
-		    <Link to="/signup">
-			<Button color="secondary" variant="contained">
-			Signup
-			</Button>
-	    	    </Link>
-		</span>
-	    ;
-	}
-
 	return(
-	    <div>
-		<AppBar>
-		    <Toolbar>
-			    <Typography variant="title" color="inherit" style={{flexGrow: 1}}>
-				<Link to="/">
-				    A Tale of Two Writers
-				</Link>
-			    </Typography>
-			<div>
-			    {greeting}
-			</div>
-		    </Toolbar>
+	    <div id="fullBar">
+		<AppBar style={{boxShadow: 'none', backgroundColor: 'white'}}>
+			<div id="barBack">
+			<p>
+				<AnchorLink id="bar" href='#cardCreators'>Creators</AnchorLink>
+	    		<AnchorLink id="bar" href='#cardAbout'>About</AnchorLink>
+	    		<AnchorLink id="bar" href="#cardHome">Home</AnchorLink>	    		
+	    	</p>
+	    	</div>
 		</AppBar>
-		<Snackbar
-		    anchorOrigin={{
-			vertical: 'bottom',
-			horizontal: 'left',
-		    }}
-		    open={this.state.snackbar.open}
-		    autoHideDuration={2500}
-		    onClose={(event, reason) => {this.closeSnackbar(event, reason);}}
-		    message={this.state.snackbar.message}
-		/>
+
 	    </div>
 	);
     }
 }
 
-export default compose(
-    firebaseConnect(),
-    connect(({firebase: {auth}}) => ({auth}))
-)(Header);
+export default Header;
