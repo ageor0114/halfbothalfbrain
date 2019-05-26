@@ -59,6 +59,11 @@ class GamePage extends React.Component{
 	    <div>
 		{!this.state.isOver &&
       <div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
         <p>
   		    Welcome to the game!
   		</p>
