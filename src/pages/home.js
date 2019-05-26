@@ -35,8 +35,8 @@ class HomePage extends React.Component{
 	    <br/>
 	    <section id="cardHome" className="card">
 		    <center>
-			<h1>A Tale Of Two Writers</h1>
-			<p>The Never-Ending Novel That Is <b id="lightTan"><i>Half Bot & Half Brain</i></b></p>
+			<h1>"A Tale Of Two Writers"</h1>
+			<p>Create a Literary Masterpiece That Is <b id="lightTan"><i>Half Bot & Half Brain</i></b></p>
 			<br/>
 			<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/hands.jpg?raw=true" id="fullWidth" alt="Portrait"/>
 			
@@ -50,6 +50,7 @@ class HomePage extends React.Component{
 	      			<Button style={style}>START</Button>
 	      		</div>
 			</div>
+			<p>What is <b><i>Half Bot Half Brain</i></b>?</p>
 			</center>
 		</section>
 		<section id="cardAbout" className="card">
