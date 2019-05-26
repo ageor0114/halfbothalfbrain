@@ -98,6 +98,7 @@ class HomePage extends React.Component{
   <div class="column">
     <center><h2>AUSTIN GEORGE</h2></center>
 		<br/>
+		<center><img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/austin.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
   </div>
   <div class="column">
     <center><h2>GLORIA MOON</h2></center>
