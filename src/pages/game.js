@@ -8,6 +8,7 @@ const shelterBox={
   margin: '5em',
   fontFamily: 'Lora',
   textDecoration: 'none',
+  height: '800px',
 }
 
 class GamePage extends React.Component{
@@ -40,6 +41,9 @@ class GamePage extends React.Component{
       //console.log('.');
       if (prevState.story.charAt(prevState.story.length-1) === '.'){
         this.state.showButton = true;
+      }
+      if (!(prevState.story.charAt(prevState.story.length-1) === '.')){
+        this.state.showButton = false;
       }
       return newState;
     });
@@ -103,7 +107,7 @@ class GamePage extends React.Component{
         </Typography>
         <br/>
         <Typography variant="subheading" gutterBottom>
-        <div id="finalStory">{this.state.story}</div>
+        <div class= "finalStory">{this.state.story}<span>|</span></div>
         </Typography>
     </Paper>
       </div>}
