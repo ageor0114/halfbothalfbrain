@@ -123,7 +123,27 @@ class MadLibs extends React.Component{
 	    <br/>
 		    <center>
 			<h1>A Tale of Two Writers</h1>
-			{!this.state.submitted && <div>
+            
+			{this.state.submitted && <div>
+				<br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <p>Thanks for playing, hope you had fun!</p>
+	      <Paper style={shelterBox} elevation={5}>
+	        <Typography variant="headline" gutterBottom>
+	          <u><b>Your Story:</b></u>
+	        </Typography>
+	        <br/>
+	        <Typography variant="subheading" gutterBottom>
+	        <div class= "finalStory" id="madPrompt">{this.state.output}<span>|</span></div>
+	        </Typography>
+	    </Paper>
+				</div>}
+			{<div>
 			<p>Write your own story or take an excerpt from online. When you're ready, press the button and let our robotic author do the rest ...</p>
 			<br/>
 					<form onSubmit={this.handleSubmit}>
@@ -152,25 +172,6 @@ class MadLibs extends React.Component{
 				    	<p id="inline">Combine 2 Stories</p>
 				    </div>
 			</div>}
-			{this.state.submitted && <div>
-				<br/>
-	      <br/>
-	      <br/>
-	      <br/>
-	      <br/>
-	      <br/>
-	      <br/>
-	      <p>Thanks for playing, hope you had fun!</p>
-	      <Paper style={shelterBox} elevation={5}>
-	        <Typography variant="headline" gutterBottom>
-	          <u><b>Your Story:</b></u>
-	        </Typography>
-	        <br/>
-	        <Typography variant="subheading" gutterBottom>
-	        <div class= "finalStory" id="madPrompt">{this.state.output}<span>|</span></div>
-	        </Typography>
-	    </Paper>
-				</div>}
 			</center>
 	    </div>
 	)
