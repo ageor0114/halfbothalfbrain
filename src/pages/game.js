@@ -69,6 +69,12 @@ class GamePage extends React.Component{
 		{!this.state.isOver &&
       <div>
         <p>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
   		    Welcome to the game page!
   		</p>
   		<form onSubmit={this.handleSubmit}>
@@ -85,6 +91,12 @@ class GamePage extends React.Component{
       <div>
 
       <p>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <br/>
       Thanks for playing, hope you had fun!
       </p>
