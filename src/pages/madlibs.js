@@ -39,7 +39,7 @@ class MadLibs extends React.Component{
     	var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
 		    targetUrl = 'http://halfbothalfbrain.pythonanywhere.com/api/mash';
 
-		var url = 'http://localhost:5000/api/mash';
+		var url = 'https://py-mashup.herokuapp.com/api/mash';
 
 		fetch(url, {
 		  method: 'POST', // or 'PUT'
