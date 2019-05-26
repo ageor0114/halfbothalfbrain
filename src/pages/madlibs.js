@@ -69,14 +69,13 @@ class MadLibs extends React.Component{
 			var temp = [];
 			array1 = array1.toString().split(',').map(Number);
 			array2 = array2.toString().split(',').map(Number);
-    	
+
 			for (var i in array1) {
 				if(array2.indexOf(array1[i]) === -1) temp.push(array1[i]);
 			}
 			for(i in array2) {
 				if(array1.indexOf(array2[i]) === -1) temp.push(array2[i]);
 			}
-			//differences = temp.sort((a,b) => 'handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.';
 
     	//PYTHON INTEGRATION
     	var data = {
