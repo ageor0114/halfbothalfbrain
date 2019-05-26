@@ -39,10 +39,17 @@ class MadLibs extends React.Component{
     console.log(this.state.story2);
   	}
 
+  	handleChangeX(event) {
+  	this.setState({show2: event.target.value});
+    console.log(this.state.show2);
+  	}
+
   	addButton(){
   		console.log("we in");
   		this.setState({show2: true});
   	}
+
+
 
     enhanceStory(){
     	this.setState({submitted:true});
@@ -129,7 +136,17 @@ class MadLibs extends React.Component{
 					<br/>
 					<br/>
 				    </form>
-				    <button className="madButton" onClick={this.enhanceStory}>Compose My Story</button>
+				    <div>
+				    	<button id="inline" className="madButton" onClick={this.enhanceStory}>Compose My Story</button>
+				    	<p id="inline">Enhance 1 Story</p>
+				    	<div id="inline">  <Switch disabled
+					        checked={this.state.show2}
+					        onChange={this.handleChangeX}
+					        value="show2"
+					        color="primary"
+					      /></div>
+				    	<p id="inline">Combine 2 Stories</p>
+				    </div>
 			</div>}
 			{this.submitted && <div>
 				<h1>Your Story</h1>
