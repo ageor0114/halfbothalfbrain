@@ -104,3 +104,25 @@ span{
 {
 	display: inline-block;
 }
+
+.madPrompt
+{
+	width: 600px;
+	height: 400px;
+	background-color: white;
+	color: black;
+	font-size: 14px;
+}
+
+.madButton
+{
+	border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #ffc9a8;
+	background-color: black;
+	color: #ffc9a8;
+	width: 200px;
+	height: 60px;
+	font-size: 16px;
+}
