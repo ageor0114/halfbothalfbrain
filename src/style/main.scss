@@ -13,6 +13,11 @@
 
 }
 
+.aboutExplanation{
+  color: black;
+  font-size: 20px;
+}
+
 body{
 	background-color: black;
 	width: 100%;
@@ -61,7 +66,7 @@ h1
 {
 	font-family: 'Helvetica';
 	color: #ffc9a8;
-	font-size: 50px;
+	font-size: 60px;
 }
 
 a{
@@ -137,7 +142,7 @@ span{
 .madPrompt
 {
 	width: 500px;
-	height: 500px;
+	height: 400px;
 	background-color: white;
 	color: black;
 	font-family: 'Helvetica';
@@ -164,13 +169,18 @@ span{
 	font-size: 16px;
 }
 
+#arrow{
+	width: 50px;
+	height: auto;
+}
+
 #lightTan { color: #ffecd3 }
 
-#fullWidth {  width: 100%;  height: auto; } 
+#fullWidth {  width: 100%;  height: auto; }
 
 #cardHome { background: black}
 #cardAbout { background: #ffc9a8; }
-#cardCreators { background: white }
+#cardCreators { background: white; }
 #black { color: black; }
 
 .card
@@ -204,4 +214,29 @@ span{
 	font-size: 40px;
 	margin-left: 10px;
 	vertical-align: center;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+.column1 {
+  float: 25%;
+  width: 50%;
+}
+.column2 {
+  float: 50%;
+  width: 75%;
+}
+.column3 {
+  float: 75%;
+  width: 100%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

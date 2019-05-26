@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from 'material-ui/styles';
 import { Link } from 'react-router-dom';
-
+import Switch from '@material-ui/core/Switch';
 import AddIcon from '@material-ui/icons/Add';
 
 
@@ -22,6 +22,7 @@ class MadLibs extends React.Component{
 	    this.handleChange2 = this.handleChange2.bind(this);
     	this.handleSubmit = this.handleSubmit.bind(this);
     	this.addButton = this.addButton.bind(this);
+    	this.enhanceStory = this.enhanceStory.bind(this);
 	}
 
 	handleSubmit(){
@@ -43,8 +44,8 @@ class MadLibs extends React.Component{
   		this.setState({show2: true});
   	}
 
-    enhanceStory(e){
-    	e.preventDefault();
+    enhanceStory(){
+    	this.setState({submitted:true});
     	//STRING MANIPULATION
 		//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
 		let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
@@ -55,23 +56,27 @@ class MadLibs extends React.Component{
 
     	//PYTHON INTEGRATION
     	var data = {
-    		//original: 'With a wicked stepmother (Eleanor Audley) and two jealous stepsisters (Rhoda Williams, Lucille Bliss) who keep her enslaved and in rags, Cinderella (Ilene Woods) stands no chance of attending the royal ball. When her fairy godmother (Verna Felton) appears and magically transforms her reality into a dream come true, Cinderella enchants the handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.',ki
-    		modifier: ''
+    		original: this.state.story,
+    		modifier: this.state.story2
     	}
     	var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
 		    targetUrl = 'http://halfbothalfbrain.pythonanywhere.com/api/mash';
 
-		var url = proxyUrl+targetUrl;
+		//var url = proxyUrl+targetUrl;
+		var url = 'http://localhost:5000/api/mash';
 
 		fetch(url, {
 		  method: 'POST', // or 'PUT'
 		  body: JSON.stringify(data), // data can be `string` or {object}!
 		  headers:{
-		    'Content-Type': 'application/json'
+		    'content-type': 'application/json'
 		  }
-		}).then(res => res)
-		.then(response => console.log('Success:', JSON.stringify(response)))
-		.catch(error => console.error('Error:', error));
+		})
+        .then(response => response.json())
+        .then((body) => {
+            console.log(body.result);
+        })
+        .catch(error => console.error('Error:', error));
     }
 
     render(){
@@ -107,8 +112,8 @@ class MadLibs extends React.Component{
 					</div>
 					<br/>
 					<br/>
-					<button className="madButton" onClick={(e) => {this.enhanceStory(e)}}>Compose My Story</button>
 				    </form>
+				    <button className="madButton" onClick={this.enhanceStory}>Compose My Story</button>
 			</div>}
 			{this.submitted && <div>
 				<h1>Your Story</h1>
