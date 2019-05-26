@@ -34,6 +34,7 @@ class HomePage extends React.Component{
 	    <div>
 	   	<br/>
 	    <br/>
+
 	    <section id="cardHome" className="card">
 		    <center>
 			<h1>A Tale Of Two Writers</h1>
@@ -54,15 +55,20 @@ class HomePage extends React.Component{
 		<section id="cardAbout" className="card">
 		<center><h1 id="black">About</h1>
 		<br/>
+		<br/>
+		<br/>
+
 
  	<div>
 		<p className="aboutExplanation"><b><i>Half Bot Half Brain</i></b> is about enhancing a user-provided story.</p>
 		<br/>
-		<p className="aboutExplanation">It replaces every <b><i>n</i></b>th word with a word of the same form of speech from wikipedia exerpt of a chosen topic.</p>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
+		<p className="aboutExplanation">It replaces every 'n'th word with a word of the same form of speech </p>
+		<p className="aboutExplanation">from a wikipedia exerpt of a chosen topic, essentially creating a MadLib of your own.</p>
+    <br/>
+		<p className="aboutExplanation">It's a fun and creative way for any writers to</p>
+		<p className="aboutExplanation">incorporate machine learning with their own natural voice.</p>
+		<p className="aboutExplanation"></p>
+
 		<br/>
 		<br/>
 		<br/>
@@ -105,7 +111,7 @@ class HomePage extends React.Component{
 		<br/>
 		<center><img class= "img" src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/gloria.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
 		<br/>
-		<center><h2>Señior</h2></center>
+		<center><h2>Señiorita</h2></center>
   </div>
   <div class="column">
     <center><h2>AARON LEE</h2></center>
@@ -115,8 +121,20 @@ class HomePage extends React.Component{
 		<center><h2>Señior</h2></center>
   </div>
 </div>
+<br/>
+<br/>
+
+
+<center><h1>From</h1></center>
+<center><h1>William A. Shine Great Neck South High School</h1></center>
+
+
 		</section>
+
+
+
 	    </div>
+
 	)
     }
 };
