@@ -5,7 +5,17 @@ import { makeStyles } from 'material-ui/styles';
 import { Link } from 'react-router-dom';
 import Switch from '@material-ui/core/Switch';
 import AddIcon from '@material-ui/icons/Add';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
+
+const shelterBox={
+  padding: '1em 2em',
+  margin: '5em',
+  fontFamily: 'Lora',
+  textDecoration: 'none',
+  height: '800px',
+}
 
 class MadLibs extends React.Component{
 
@@ -45,7 +55,6 @@ class MadLibs extends React.Component{
   	}
 
     enhanceStory(){
-    	this.setState({submitted:true});
     	//STRING MANIPULATION
 		//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
 		let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
@@ -73,7 +82,8 @@ class MadLibs extends React.Component{
     	//PYTHON INTEGRATION
     	var data = {
     		original: this.state.story,
-    		modifier: this.state.story2
+    		modifier: this.state.story2,
+				craziness: 100
     	}
     	var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
 		    targetUrl = 'http://halfbothalfbrain.pythonanywhere.com/api/mash';
@@ -89,7 +99,9 @@ class MadLibs extends React.Component{
 		})
         .then(response => response.json())
         .then((body) => {
-            console.log(body.result);
+			    	this.setState({submitted:true});
+						this.setState({output:body.result});
+            //console.log(body.result);
         })
         .catch(error => console.error('Error:', error));
     }
@@ -111,7 +123,7 @@ class MadLibs extends React.Component{
 	    <br/>
 		    <center>
 			<h1>A Tale of Two Writers</h1>
-			{!this.submitted && <div>
+			{!this.state.submitted && <div>
 			<p>Write your own story or take an excerpt from online. When you're ready, press the button and let our robotic author do the rest ...</p>
 			<br/>
 					<form onSubmit={this.handleSubmit}>
@@ -130,10 +142,30 @@ class MadLibs extends React.Component{
 				    </form>
 				    <button className="madButton" onClick={this.enhanceStory}>Compose My Story</button>
 			</div>}
-			{this.submitted && <div>
-				<h1>Your Story</h1>
 
-				<div id="madPrompt"><p>{this.state.output}</p></div>
+
+			{this.state.submitted && <div>
+				<br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <p>Thanks for playing, hope you had fun!</p>
+
+	      <Paper style={shelterBox} elevation={5}>
+	        <Typography variant="headline" gutterBottom>
+	          <u><b>Your Story:</b></u>
+	        </Typography>
+	        <br/>
+	        <Typography variant="subheading" gutterBottom>
+	        <div class= "finalStory" id="madPrompt">{this.state.output}<span>|</span></div>
+	        </Typography>
+	    </Paper>
+
+
+
 				</div>}
 			</center>
 	    </div>
