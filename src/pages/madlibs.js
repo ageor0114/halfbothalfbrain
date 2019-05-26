@@ -23,6 +23,15 @@ class MadLibs extends React.Component{
 
     enhanceStory(e){
     	e.preventDefault();
+    	//STRING MANIPULATION
+		//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
+		let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
+		let newWords = [];
+
+		var words1 = this.state.story.split(" ");
+		var words2 = output.split(" ");
+
+    	//PYTHON INTEGRATION
     	var data = {
     		original: this.state.story,
     		modifier: 'With a wicked stepmother (Eleanor Audley) and two jealous stepsisters (Rhoda Williams, Lucille Bliss) who keep her enslaved and in rags, Cinderella (Ilene Woods) stands no chance of attending the royal ball. When her fairy godmother (Verna Felton) appears and magically transforms her reality into a dream come true, Cinderella enchants the handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.'
