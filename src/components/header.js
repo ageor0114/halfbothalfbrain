@@ -36,6 +36,7 @@ class Header extends React.Component{
 		<AppBar style={{boxShadow: 'none', backgroundColor: 'white'}}>
 			<div id="barBack">
 			<p>
+				<Link to="/" id="mainButton">Half Bot Half Brain</Link>
 				<AnchorLink id="bar" href='#cardCreators'>Creators</AnchorLink>
 	    		<AnchorLink id="bar" href='#cardAbout'>About</AnchorLink>
 	    		<AnchorLink id="bar" href="#cardHome">Home</AnchorLink>	    		

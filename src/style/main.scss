@@ -13,6 +13,11 @@
 
 }
 
+.aboutExplanation{
+  color: black;
+  font-size: 20px;
+}
+
 body{
 	background-color: black;
 	width: 100%;
@@ -21,6 +26,34 @@ body{
 .hands{
 	width: 100;
 	height: 200;
+}
+
+.namePrompt
+{
+	width: 220px;
+	height: 70px;
+	font-size: 25px;
+	padding-left: 20px;
+}
+
+#inline
+{
+	display: inline-block;
+}
+
+#bar
+{
+	font-size: 20px;
+	color: #ffc9a8;
+	float: right;
+	padding-right: 30px;
+}
+
+#barBack
+{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: black;
 }
 
 .MuiGrid-grid-sm-6-48 {
@@ -132,4 +165,56 @@ span{
 	width: 200px;
 	height: 60px;
 	font-size: 16px;
+}
+
+#lightTan { color: #ffecd3 }
+
+#fullWidth {  width: 100%;  height: auto; }
+
+#cardHome { background: black}
+#cardAbout { background: #ffc9a8; }
+#cardCreators { background: white; }
+#black { color: black; }
+
+.card
+{
+	padding-top: 70px;
+	width: 100%;
+	height: 100vh;
+}
+
+#mainButton
+{
+	font-size: 20px;
+	color: #ffc9a8;
+	float: left;
+	padding-left: 30px;
+	float: left;
+	font-weight: bold;
+}
+
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+.column1 {
+  float: 25%;
+  width: 50%;
+}
+.column2 {
+  float: 50%;
+  width: 75%;
+}
+.column3 {
+  float: 75%;
+  width: 100%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

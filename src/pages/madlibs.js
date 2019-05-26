@@ -30,6 +30,7 @@ class MadLibs extends React.Component{
 
     enhanceStory(e){
     	e.preventDefault();
+<<<<<<< HEAD
 			//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
 			let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
 			let newWords = [];
@@ -53,8 +54,25 @@ console.log('story' + this.state.story);
 			for(i in array2) {
 				if(array1.indexOf(array2[i]) === -1) temp.push(array2[i]);
 			}
-			differences = temp.sort((a,b) => a-b);
+			differences = temp.sort((a,b) => handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.'
+    	}
+    	var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+		    targetUrl = 'http://halfbothalfbrain.pythonanywhere.com/api/mash';
 
+		var url = 'https://py-mashup.herokuapp.com/api/mash';
+
+		fetch(url, {
+		  method: 'POST', // or 'PUT'
+		  body: JSON.stringify(data), // data can be `string` or {object}!
+		  headers:{
+		    'content-type': 'application/json'
+		  }
+		})
+        .then(response => response.json())
+        .then((body) => {
+            console.log(body);
+        })
+        .catch(error => console.error('Error:', error));
     }
 
     render(){
