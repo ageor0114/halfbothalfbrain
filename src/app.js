@@ -30,6 +30,7 @@ import LoginPage from './pages/login';
 import SignupPage from './pages/signup';
 import SandwichesPage from './pages/sandwiches';
 import GamePage from './pages/game';
+import MadLibs from './pages/madlibs';
 
 
 
@@ -105,6 +106,7 @@ export default class App extends React.Component{
           <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/sandwiches" component={SandwichesPage} />
           <Route exact path="/game" component={GamePage} />
+          <Route exact path="/madlibs" component={MadLibs} />
 			    </div>
 			</ConnectedRouter>
 		</Provider>
