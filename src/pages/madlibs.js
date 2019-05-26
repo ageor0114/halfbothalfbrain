@@ -152,12 +152,9 @@ class MadLibs extends React.Component{
 				    	<p id="inline">Combine 2 Stories</p>
 				    </div>
 			</div>}
-<<<<<<< HEAD
 			{this.state.submitted && <div>
             <img src="src\pages\explode.gif"></img>
 				<h1>Your Story</h1>
-=======
->>>>>>> de37de20c583f35b2a5c71d859f6797c27ba5986
 
 
 			{this.state.submitted && <div>
