@@ -9,32 +9,52 @@ class MadLibs extends React.Component{
 		story: '',
 	}
 
+	constructor(props){
+		super(props);
+		this.onChange = this.onChange.bind(this);
+	}
 	handleSubmit(){
 		console.log('submit');
 	}
 
-	onChange(e){
+	onChange(value){
+
 		this.setState(prevState => {
+			//console.log('*'+"bob");
 			let newState = prevState;
-			newState.story = e.target;
+			newState.story = 'bob';
 			return newState;
 		})
+		console.log(this.state.story);
 	}
 
     enhanceStory(e){
     	e.preventDefault();
-    	//STRING MANIPULATION
-		//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
-		let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
-		let newWords = [];
+<<<<<<< HEAD
+			//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
+			let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
+			let newWords = [];
+console.log('story' + this.state.story);
+			var array1 = this.state.story.split(" ");
+			var array2 = output.split(" ");
+			console.log(1);
+			console.log('array1');
+			console.log(2);
+			console.log('array2');
+			var differences = [];
 
-		var words1 = this.state.story.split(" ");
-		var words2 = output.split(" ");
+			var temp = [];
 
-    	//PYTHON INTEGRATION
-    	var data = {
-    		original: this.state.story,
-    		modifier: 'With a wicked stepmother (Eleanor Audley) and two jealous stepsisters (Rhoda Williams, Lucille Bliss) who keep her enslaved and in rags, Cinderella (Ilene Woods) stands no chance of attending the royal ball. When her fairy godmother (Verna Felton) appears and magically transforms her reality into a dream come true, Cinderella enchants the handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.'
+			array1 = array1.toString().split(',').map(Number);
+			array2 = array2.toString().split(',').map(Number);
+
+			for (var i in array1) {
+				if(array2.indexOf(array1[i]) === -1) temp.push(array1[i]);
+			}
+			for(i in array2) {
+				if(array1.indexOf(array2[i]) === -1) temp.push(array2[i]);
+			}
+			differences = temp.sort((a,b) => handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.'
     	}
     	var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
 		    targetUrl = 'http://halfbothalfbrain.pythonanywhere.com/api/mash';
@@ -75,7 +95,7 @@ class MadLibs extends React.Component{
 			<p>Write your own story or take an excerpt from online. When you're ready, press the button and let our robotic author do the rest ...</p>
 			<br/>
 					<form onSubmit={this.handleSubmit}>
-					<textarea className="madPrompt" type="text" onChange={(e)=>{this.onChange(e)}} placeholder="Enter Your Story" value={this.state.story}/>
+					<textarea className="madPrompt" type="text" onChange={(e) => this.onChange(e)} placeholder="Enter Your Story" value={this.state.story}/>
 					<br/>
 					<br/>
 					<button className="madButton" onClick={(e) => {this.enhanceStory(e)}}>Enhance My Story</button>
