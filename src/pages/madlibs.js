@@ -27,7 +27,6 @@ class MadLibs extends React.Component{
 			show2: false,
 			submitted: false,
 			output: '',
-			subs: [],
 		}
 	    this.handleChange = this.handleChange.bind(this);
 	    this.handleChange2 = this.handleChange2.bind(this);
@@ -105,22 +104,6 @@ class MadLibs extends React.Component{
             //console.log(body.result);
         })
         .catch(error => console.error('Error:', error));
-
-				for (int i=0; i < this.state.output.length; i++){
-						if(i>50 && (this.state.output.charAt(i) === ' ')){
-							if (i+50>=this.state.output.length-1){
-							var substrs = this.state.output.substring(i, i+50);
-						}
-						else {
-						var substrs = this.state.output.substring(i);
-					}
-					subs.add(substrs);
-						}
-
-				}
-
-
-
     }
 
     render(){
@@ -184,21 +167,7 @@ class MadLibs extends React.Component{
 	        </Typography>
 	        <br/>
 	        <Typography variant="subheading" gutterBottom>
-	        <div class= "finalStory" id="madPrompt">
-					{subs[0]}
-					</div>
-					<div class= "finalStory" id="madPrompt">
-					{subs[1]}
-					</div>
-					<div class= "finalStory" id="madPrompt">
-					{subs[2]}
-					</div>
-					<div class= "finalStory" id="madPrompt">
-					{subs[3]}
-					</div>
-					<div class= "finalStory" id="madPrompt">
-				<span>|</span></div>
-					</div>
+	        <div class= "finalStory" id="madPrompt">{this.state.output}<span>|</span></div>
 	        </Typography>
 	    </Paper>
 				</div>}
