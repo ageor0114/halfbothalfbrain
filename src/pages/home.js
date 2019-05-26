@@ -33,25 +33,31 @@ class HomePage extends React.Component{
 	    <div>
 	    <br/>
 	    <br/>
-	    <br/>
-	    <br/>
-	    <center>
-		<h1>A Tale Of Two Writers</h1>
-		<p>The Never-Ending Novel That Is <b>Half Bot & Half Brain</b></p>
-		<br/>
-		<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/hands.jpg?raw=true" height="500" width="1700" alt="Portrait"/>
-		
-		<div>
-			<div id="inline">
-				<form onSubmit={this.handleSubmit}>
-				<input className="namePrompt" type="text" onChange={(e)=>{this.onChange(e)}} placeholder="Enter Your Name" value={this.state.name}/>
-			    </form>
-      		</div>
-      		<div className="startButton" id="inline">
-      			<Button style={style}>START</Button>
-      		</div>
-		</div>
-		</center>
+	    <section id="cardHome" className="card">
+		    <center>
+			<h1>A Tale Of Two Writers</h1>
+			<p>The Never-Ending Novel That Is <b id="lightTan"><i>Half Bot & Half Brain</i></b></p>
+			<br/>
+			<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/hands.jpg?raw=true" id="fullWidth" alt="Portrait"/>
+			
+			<div>
+				<div id="inline">
+					<form onSubmit={this.handleSubmit}>
+					<input className="namePrompt" type="text" onChange={(e)=>{this.onChange(e)}} placeholder="Enter Your Name" value={this.state.name}/>
+				    </form>
+	      		</div>
+	      		<div className="startButton" id="inline">
+	      			<Button style={style}>START</Button>
+	      		</div>
+			</div>
+			</center>
+		</section>
+		<section id="cardAbout" className="card">
+				<center><h1 id="black">About</h1></center>
+		</section>
+		<section id="cardCreators" className="card">
+				<center><h1>Creators</h1></center>
+		</section>
 	    </div>
 
 	)
