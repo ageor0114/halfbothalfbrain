@@ -23,6 +23,24 @@ class MadLibs extends React.Component{
 
     enhanceStory(e){
     	e.preventDefault();
+    	var data = {
+    		original: this.state.story,
+    		modifier: 'With a wicked stepmother (Eleanor Audley) and two jealous stepsisters (Rhoda Williams, Lucille Bliss) who keep her enslaved and in rags, Cinderella (Ilene Woods) stands no chance of attending the royal ball. When her fairy godmother (Verna Felton) appears and magically transforms her reality into a dream come true, Cinderella enchants the handsome Prince Charming at the ball, but must face the wrath of her enraged stepmother and sisters when the spell wears off at midnight.'
+    	}
+    	var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+		    targetUrl = 'http://halfbothalfbrain.pythonanywhere.com/api/mash';
+
+		var url = targetUrl;
+
+		fetch(url, {
+		  method: 'POST', // or 'PUT'
+		  body: JSON.stringify(data), // data can be `string` or {object}!
+		  headers:{
+		    'Content-Type': 'application/json'
+		  }
+		}).then(res => res)
+		.then(response => console.log('Success:', JSON.stringify(response)))
+		.catch(error => console.error('Error:', error));
     }
 
     render(){

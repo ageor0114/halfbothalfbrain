@@ -23,6 +23,34 @@ body{
 	height: 200;
 }
 
+.namePrompt
+{
+	width: 220px;
+	height: 70px;
+	font-size: 25px;
+	padding-left: 20px;
+}
+
+#inline
+{
+	display: inline-block;
+}
+
+#bar
+{
+	font-size: 20px;
+	color: #ffc9a8;
+	float: right;
+	padding-right: 30px;
+}
+
+#barBack
+{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: black;
+}
+
 .MuiGrid-grid-sm-6-48 {
     flex-grow: 0;
     max-width: 100%;
@@ -132,4 +160,30 @@ span{
 	width: 200px;
 	height: 60px;
 	font-size: 16px;
+}
+
+#lightTan { color: #ffecd3 }
+
+#fullWidth {  width: 100%;  height: auto; } 
+
+#cardHome { background: black}
+#cardAbout { background: #ffc9a8; }
+#cardCreators { background: white }
+#black { color: black; }
+
+.card
+{
+	padding-top: 70px;
+	width: 100%;
+	height: 100vh;
+}
+
+#mainButton
+{
+	font-size: 20px;
+	color: #ffc9a8;
+	float: left;
+	padding-left: 30px;
+	float: left;
+	font-weight: bold;
 }
