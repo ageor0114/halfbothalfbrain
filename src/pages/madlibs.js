@@ -23,13 +23,6 @@ class MadLibs extends React.Component{
 
     enhanceStory(e){
     	e.preventDefault();
-    	const spacyNLP = require('spacy-nlp');
-    	const nlp = spacyNLP.nlp;
-
-    	nlp.parse(this.state.story).then(output => {
-    			console.log(output);
-    			console.log(JSON.stringify(output[0].parse_tree,null,2));
-    	});
     }
 
     render(){
