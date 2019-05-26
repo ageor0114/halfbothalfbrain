@@ -44,6 +44,7 @@ a{
 p{
 	font-family: 'Helvetica';
 	color: white;
+	font-size: 18px;
 }
 
 .what{
@@ -111,7 +112,13 @@ span{
 	height: 400px;
 	background-color: white;
 	color: black;
-	font-size: 14px;
+	font-family: 'Helvetica';
+	border-radius: 5px;
+	font-size: 20px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
 }
 
 .madButton
