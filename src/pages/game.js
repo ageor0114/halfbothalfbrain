@@ -1,5 +1,14 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+
+const shelterBox={
+  padding: '1em 2em',
+  margin: '5em',
+  fontFamily: 'Lora',
+  textDecoration: 'none',
+}
 
 class GamePage extends React.Component{
   state = {
@@ -72,7 +81,23 @@ class GamePage extends React.Component{
       <p>{this.state.story}</p>
       {this.state.showButton && <button onClick={this.onClickEnd}>End Game</button>}
     </div>}
-    {this.state.isOver && <div>Thanks for playing, hope you had fun!</div>}
+    {this.state.isOver &&
+      <div>
+
+      <p>
+      <br/>
+      Thanks for playing, hope you had fun!
+      </p>
+      <Paper style={shelterBox} elevation={5}>
+        <Typography variant="headline" gutterBottom>
+          <u><b>Here's the Final Story:</b></u>
+        </Typography>
+        <br/>
+        <Typography variant="subheading" gutterBottom>
+  {this.state.story}
+        </Typography>
+    </Paper>
+      </div>}
 
 	    </div>
 	)
