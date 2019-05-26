@@ -23,6 +23,13 @@ class MadLibs extends React.Component{
 
     enhanceStory(e){
     	e.preventDefault();
+			//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
+			let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
+			let newWords = [];
+
+			var words1 = this.state.story.split(" ");
+			var words2 = output.split(" ");
+
     }
 
     render(){
