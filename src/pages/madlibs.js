@@ -49,10 +49,10 @@ class MadLibs extends React.Component{
 	    <br/>
 		    <center>
 			<h1>Robotic Mad Libs</h1>
-			<p>Enter your own story and let our robotic author do the rest ...</p>
+			<p>Write your own story or take an excerpt from online. When you're ready, press the button and let our robotic author do the rest ...</p>
 			<br/>
 					<form onSubmit={this.handleSubmit}>
-					<input className="madPrompt" type="text" onChange={(e)=>{this.onChange(e)}} placeholder="Enter Your Story" value={this.state.story}/>
+					<textarea className="madPrompt" type="text" onChange={(e)=>{this.onChange(e)}} placeholder="Enter Your Story" value={this.state.story}/>
 					<br/>
 					<br/>
 					<button className="madButton" onClick={(e) => {this.enhanceStory(e)}}>Enhance My Story</button>
