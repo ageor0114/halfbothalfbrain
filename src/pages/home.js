@@ -71,7 +71,7 @@ class HomePage extends React.Component{
 		<br/>
 
 
-		<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/Madlib.gif?raw=true" did="fullWidth" alt="Portrait"/>
+		<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/madlib.gif?raw=true" did="fullWidth" alt="Portrait"/>
 
  </div>
 
@@ -89,22 +89,30 @@ class HomePage extends React.Component{
   <div class="column">
     <center><h2>ENOCH CHEN</h2></center>
 		<br/>
-		<center><img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/enoch.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<center><img class= "img" src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/enoch.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<br/>
+		<center><h2>Señior</h2></center>
   </div>
   <div class="column">
     <center><h2>AUSTIN GEORGE</h2></center>
 		<br/>
-		<center><img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/austin.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<center><img class= "img" src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/austin.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<br/>
+		<center><h2>juñior</h2></center>
   </div>
   <div class="column">
     <center><h2>GLORIA MOON</h2></center>
 		<br/>
-		<center><img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/gloria.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<center><img class= "img" src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/gloria.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<br/>
+		<center><h2>Señior</h2></center>
   </div>
   <div class="column">
     <center><h2>AARON LEE</h2></center>
 		<br/>
-		<center><img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/aaron.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<center><img class= "img" src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/aaron.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<br/>
+		<center><h2>Señior</h2></center>
   </div>
 </div>
 		</section>
