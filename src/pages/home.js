@@ -51,6 +51,7 @@ class HomePage extends React.Component{
 	      		</div>
 			</div>
 			<p>What is <b><i>Half Bot Half Brain</i></b>?</p>
+			<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/downarrow.gif?raw=true" did="fullWidth" alt="Portrait"/>
 			</center>
 		</section>
 
@@ -64,8 +65,17 @@ class HomePage extends React.Component{
 		<p className="aboutExplanation">It replaces every <b><i>n</i></b>th word with a word of the same form of speech from wikipedia exerpt of a chosen topic.</p>
 		<br/>
 		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 
-		<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/MadLibs.gif?raw=true" did="fullWidth" alt="Portrait"/>
+
+		<img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/Madlib.gif?raw=true" did="fullWidth" alt="Portrait"/>
 
  </div>
 
@@ -82,17 +92,21 @@ class HomePage extends React.Component{
 <div class="row">
   <div class="column">
     <center><h2>ENOCH CHEN</h2></center>
-		<center><img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/ENOCH.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<br/>
+		<center><img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/enoch.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
   </div>
   <div class="column">
     <center><h2>AUSTIN GEORGE</h2></center>
+		<br/>
   </div>
   <div class="column">
     <center><h2>GLORIA MOON</h2></center>
+		<br/>
   </div>
   <div class="column">
     <center><h2>AARON LEE</h2></center>
-		<center><img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/ENOCH.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
+		<br/>
+		<center><img src="https://github.com/ageor0114/nyit-hackathon/blob/master/src/pages/aaron.jpg?raw=true" id="fullWidth" alt="Portrait"/></center>
   </div>
 </div>
 		</section>
