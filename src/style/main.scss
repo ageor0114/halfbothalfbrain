@@ -103,11 +103,6 @@ p{
   animation: type2 8s steps(60, end);
 }
 
-
-span{
-  animation: blink 1.48s infinite;
-}
-
 @keyframes type{
   from { width: 0; }
 }
