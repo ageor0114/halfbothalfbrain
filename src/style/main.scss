@@ -36,10 +36,13 @@ body{
 	padding-left: 20px;
 }
 
-#inline
+.column
 {
-	display: inline-block;
+    float: left;
+    margin: auto;
+    width:100%
 }
+
 
 #bar
 {
@@ -184,7 +187,6 @@ p{
 	color: #ffc9a8;
 	float: left;
 	padding-left: 30px;
-	float: left;
 	font-weight: bold;
 }
 

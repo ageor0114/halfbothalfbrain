@@ -22,29 +22,31 @@ class MadLibs extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			story: '',
-			story2: '',
+			originalText: '',
+			modifierText: '',
+			resultText: '',
 			show2: false,
 			submitted: false,
-			output: '',
 		}
-	    this.handleChange = this.handleChange.bind(this);
-	    this.handleChange2 = this.handleChange2.bind(this);
+	    this.handleOriginalTextChange = this.handleOriginalTextChange.bind(this);
+	    this.handleModifierTextChange = this.handleModifierTextChange.bind(this);
     	this.handleSubmit = this.handleSubmit.bind(this);
     	this.addButton = this.addButton.bind(this);
     	this.enhanceStory = this.enhanceStory.bind(this);
+    	this.suggestOriginal = this.suggestOriginal.bind(this);
+    	this.suggestModifier = this.suggestModifier.bind(this);
 	}
 
 	handleSubmit(){
 		console.log('submit');
 	}
 
-	handleChange(event){
-        this.setState({story: event.target.value});
+	handleOriginalTextChange(event){
+        this.setState({originalText: event.target.value});
   	}
 
-  	handleChange2(event) {
-        this.setState({story2: event.target.value});
+  	handleModifierTextChange(event) {
+        this.setState({modifierText: event.target.value});
   	}
 
   	handleChangeX(event) {
@@ -61,29 +63,29 @@ class MadLibs extends React.Component{
     enhanceStory(){
     	//STRING MANIPULATION
 		//Precondition: story = Gloria eats chocolate pudding in the dark. On the other hand, Aaron hates cats.
-		let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
+		/*let output = "Gloria likes figgy pudding in the morning. On the same hand, Aaron hates dogs."
 		let newWords = [];
 		console.log('story' + this.state.story);
-			var array1 = this.state.story.split(" ");
-			var array2 = output.split(" ");
-			var differences = [];
+        var array1 = this.state.story.split(" ");
+        var array2 = output.split(" ");
+        var differences = [];
 
-			var temp = [];
-			array1 = array1.toString().split(',').map(Number);
-			array2 = array2.toString().split(',').map(Number);
+        var temp = [];
+        array1 = array1.toString().split(',').map(Number);
+        array2 = array2.toString().split(',').map(Number);
 
-			for (var i in array1) {
-				if(array2.indexOf(array1[i]) === -1) temp.push(array1[i]);
-			}
-			for(i in array2) {
-				if(array1.indexOf(array2[i]) === -1) temp.push(array2[i]);
-			}
+        for (var i in array1) {
+            if(array2.indexOf(array1[i]) === -1) temp.push(array1[i]);
+        }
+        for(i in array2) {
+            if(array1.indexOf(array2[i]) === -1) temp.push(array2[i]);
+        }*/
 
-    	//PYTHON INTEGRATION
+    	//CONNECT TO HEROKU-HOSTED BACKEND
     	var data =
         {
-    		original: this.state.story,
-    		modifier: this.state.story2,
+    		original: this.state.originalText,
+    		modifier: this.state.modifierText,
             craziness: 100
     	}
 
@@ -99,8 +101,39 @@ class MadLibs extends React.Component{
 		})
         .then(response => response.json())
         .then((body) => {
-			    	this.setState({submitted:true});
-						this.setState({output:body.result});
+            this.setState({submitted:true});
+            this.setState({resultText:body.result});
+            this.setState({originalText:body.original});
+            this.setState({modifierText:body.modifier});
+            //console.log(body.result);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    
+    suggestOriginal(){
+		var url = 'https://py-mashup.herokuapp.com/api/wiki';
+		fetch(url, {
+		  method: 'POST', // or 'PUT'
+		})
+        .then(response => response.json())
+        .then((body) => {
+            this.setState({originalText:body.result});
+            //console.log(body.result);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    
+    suggestModifier(){
+		var url = 'https://py-mashup.herokuapp.com/api/wiki';
+		fetch(url, {
+		  method: 'POST', // or 'PUT'
+		  headers:{
+		    'content-type': 'application/json'
+		  }
+		})
+        .then(response => response.json())
+        .then((body) => {
+            this.setState({modifierText:body.result});
             //console.log(body.result);
         })
         .catch(error => console.error('Error:', error));
@@ -139,7 +172,7 @@ class MadLibs extends React.Component{
 	        </Typography>
 	        <br/>
 	        <Typography variant="subheading" gutterBottom>
-	        <div class= "finalStory" id="madPrompt">{this.state.output}<span>|</span></div>
+	        <div class= "finalStory" id="madPrompt">{this.state.resultText}<span>|</span></div>
 	        </Typography>
 	    </Paper>
 				</div>}
@@ -148,18 +181,22 @@ class MadLibs extends React.Component{
 			<br/>
 					<form onSubmit={this.handleSubmit}>
 					<div>
-						<textarea id="inline" value={this.state.story} className="madPrompt" type="text" onChange={this.handleChange}  placeholder="Enter A Story" />
+						<textarea id="inline" value={this.state.originalText} className="madPrompt" type="text" onChange={this.handleOriginalTextChange}  placeholder="Enter A Story" />
+
 						<div id="inline">
 							{/*!this.show2 && <button type="button" onClick={this.state.addButton} className="circleButton">+</button>*/}
 						</div>
-						<textarea id="inline" value={this.state.story2} className="madPrompt" type="text" onChange={this.handleChange2}  placeholder="Enter Another Story OR Leave it Blank to Let Our Robot Do The Rest" />
-						<div id="inline">
+						<textarea id="inline" value={this.state.modifierText} className="madPrompt" type="text" onChange={this.handleModifierTextChange}  placeholder="Enter Another Story OR Leave it Blank to Let Our Robot Do The Rest" />
+						
+                        <div id="inline">
 							{this.show2 && <Button>DELETE</Button>}
 						</div>
 					</div>
-					<br/>
-					<br/>
 				    </form>
+                    <button id="inline" className="madButton" onClick={this.suggestOriginal}>Suggest</button>
+                    <button id="inline" className="madButton" onClick={this.suggestModifier}>Suggest</button>
+					<br/>
+					<br/>
 				    <div>
 				    	<button id="inline" className="madButton" onClick={this.enhanceStory}>Compose My Story</button>
 				    	<p id="inline">Enhance 1 Story</p>
